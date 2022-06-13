@@ -14,11 +14,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(FabricSeeder::class);
+        $this->command->info('Fabric table seeded!');
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(RemoteSeeder::class);
+        $this->command->info('Remote table seeded!');
+
+        $this->call(MotorSeeder::class);
+        $this->command->info('Motor table seeded!');
+
+        $this->call(FabricTypeSeeder::class);
+        $this->command->info('Fabric Type table seeded!');
+
+        $this->call(MotorDirectionSeeder::class);
+        $this->command->info('Motor Direction table seeded!');
+
+        $this->call(MotorRemoteSeeder::class);
+        $this->command->info('Motor Remote table seeded!');
+
+        $this->call(RalCodeSeeder::class);
+        $this->command->info('RAL Code table seeded!');
     }
 }

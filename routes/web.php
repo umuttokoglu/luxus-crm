@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn() => view('pages.dashboard'))->name('dashboard');
+
+Route::resource('offers', OfferController::class);
+Route::resource('companies', CompanyController::class);
+
+Route::get('/motor-remotes', function () {
+    $remotes = \App\Models\MotorRemote::with('remote')->where('motor_id', request()->get('motor_id'))->get();
+
+    return response()->json($remotes);
+})->name('motor-remotes');
+
+Route::get('/fabric-types', function () {
+    $fabricTypes = \App\Models\FabricType::where('fabric_id', request()->get('fabric_id'))->get();
+
+    return response()->json($fabricTypes);
+})->name('fabric-types');
