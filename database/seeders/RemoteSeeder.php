@@ -15,12 +15,12 @@ class RemoteSeeder extends Seeder
      */
     public function run()
     {
-        Remote::create(['name' => 'Ücretsiz Kumanda']);
-        Remote::create(['name' => '1 Kanallı Kumanda']);
-        Remote::create(['name' => '4 Kanallı Kumanda']);
-        Remote::create(['name' => '5 Kanallı Kumanda']);
-        Remote::create(['name' => '10 Kanallı Kumanda']);
-        Remote::create(['name' => '16 Kanallı Kumanda']);
-        Remote::create(['name' => '60 Kanallı Kumanda']);
+        Remote::create(['name' => 'Ücretsiz Kumanda', 'price' => 0]);
+        Remote::create(['name' => '1 Kanallı Kumanda', 'price' => 46]);
+        Remote::create(['name' => '4 Kanallı Kumanda', 'price' => 78]);
+        Remote::create(['name' => '5 Kanallı Kumanda', 'price' => 73]);
+        Remote::create(['name' => '10 Kanallı Kumanda', 'price' => 130]);
+        Remote::create(['name' => '16 Kanallı Kumanda', 'price' => 216]);
+        Remote::create(['name' => '60 Kanallı Kumanda', 'price' => 240]);
     }
 }

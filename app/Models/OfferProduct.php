@@ -18,6 +18,8 @@ class OfferProduct extends Model
         'motor_quantity',
         'remote_type',
         'ral_code',
-        'product_price'
+        'product_price',
+        'is_warranty_applicable',
+        'is_logo'
     ];
 }

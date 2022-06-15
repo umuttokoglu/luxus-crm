@@ -34,5 +34,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RalCodeSeeder::class);
         $this->command->info('RAL Code table seeded!');
+
+        $this->call(ProductPriceSeeder::class);
+        $this->command->info('Product Price table seeded!');
     }
 }

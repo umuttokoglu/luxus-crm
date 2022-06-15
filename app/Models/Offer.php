@@ -12,4 +12,9 @@ class Offer extends Model
         'company_id',
         'total_price'
     ];
+
+    public function offer_product()
+    {
+        return $this->hasMany(OfferProduct::class);
+    }
 }

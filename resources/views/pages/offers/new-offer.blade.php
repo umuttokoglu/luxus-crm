@@ -15,7 +15,7 @@
 @endsection
 
 @section('page-content')
-    @if(null !== $companies)
+    @if($companies->count())
         <div id="tableCustomMixed" class="col-lg-12 col-12 layout-spacing">
             <div class="statbox widget box box-shadow">
                 <div class="widget-header">
@@ -58,6 +58,8 @@
                             <input type="hidden" name="company_id" value="{{ $companies->id }}">
                         @endif
 
+                        <input type="hidden" value="{{ session()->get('offerId') }}" name="offer_id">
+
                         <div class="col-md-6">
                             <label for="height" class="form-label">Yükseklik</label>
                             <div class="mb-4">
@@ -74,9 +76,9 @@
                         </div>
 
                         <div class="col-md-12">
-                            <label for="fabric_type" class="form-label">Kumaş Markası Seçin</label>
-                            <select class="form-select" id="fabric_type" name="fabric_type">
-                                <option selected>Kumaş Seçiniz</option>
+                            <label for="fabric" class="form-label">Kumaş Markası Seçin</label>
+                            <select class="form-select" id="fabric" name="fabric" required>
+                                <option selected value="0">Kumaş Seçiniz</option>
                                 @foreach($fabrics as $fabric)
                                     <option value="{{ $fabric->id }}">{{ $fabric->name }}</option>
                                 @endforeach
@@ -88,8 +90,8 @@
 
                         <div class="col-md-6">
                             <label for="motor_type" class="form-label">Motor Markası Seçin</label>
-                            <select class="form-select" id="motor_type" name="motor_type">
-                                <option selected>Motor Seçiniz</option>
+                            <select class="form-select" id="motor_type" name="motor_type" required>
+                                <option selected value="0">Motor Seçiniz</option>
                                 @foreach($motors as $motor)
                                     <option value="{{ $motor->id }}">{{ $motor->name }}</option>
                                 @endforeach
@@ -98,8 +100,8 @@
 
                         <div class="col-md-6">
                             <label for="remote_type" class="form-label">Kumanda Tipi Seçin</label>
-                            <select class="form-select" id="remote_type" name="remote_type">
-                                <option selected>Kumanda Seçiniz</option>
+                            <select class="form-select" id="remote_type" name="remote_type" required>
+                                <option selected value="0">Kumanda Seçiniz</option>
                             </select>
                         </div>
 
@@ -111,8 +113,8 @@
 
                         <div class="col-md-6">
                             <label for="motor_direction" class="form-label">Motor Yönü Seçin</label>
-                            <select class="form-select" id="motor_direction" name="motor_direction">
-                                <option selected>Motor Yönü Seçin</option>
+                            <select class="form-select" id="motor_direction" name="motor_direction"  required>
+                                <option selected value="0">Motor Yönü Seçin</option>
                                 @foreach($motorDirections as $motorDirection)
                                     <option value="{{ $motorDirection->id }}">{{ $motorDirection->name }}</option>
                                 @endforeach
@@ -120,9 +122,9 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="motor_direction" class="form-label">Ral Kodu Seçin</label>
-                            <select class="form-select" id="motor_direction" name="motor_direction">
-                                <option selected>Ral Kodu Seçin</option>
+                            <label for="ral_code" class="form-label">Ral Kodu Seçin</label>
+                            <select class="form-select" id="ral_code" name="ral_code"  required>
+                                <option selected value="0">Ral Kodu Seçin</option>
                                 @foreach($ralCodes as $ralCode)
                                     <option value="{{ $ralCode->id }}">{{ $ralCode->name }}</option>
                                 @endforeach
@@ -235,8 +237,6 @@
                 },
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response);
-
                     var len = response.length;
 
                     $("#remote_type").empty();
@@ -251,7 +251,7 @@
             });
         });
 
-        $("#fabric_type").change(function () {
+        $("#fabric").change(function () {
             var fabricId = $(this).val();
 
             $.ajax({
@@ -262,11 +262,9 @@
                 },
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response);
-
                     var len = response.length;
 
-                    $(".fabric_types").empty();
+                    $(".fabric").empty();
 
                     for (var i = 0; i < len; i++) {
                         var id = response[i]['id'];

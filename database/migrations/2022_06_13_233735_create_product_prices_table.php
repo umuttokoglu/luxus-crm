@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('remotes', function (Blueprint $table) {
+        Schema::create('product_prices', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('fabric_id')->constrained();
+            $table->integer('width');
+            $table->integer('height');
             $table->integer('price');
+            $table->boolean('is_warranty');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('remotes');
+        Schema::dropIfExists('product_prices');
     }
 };

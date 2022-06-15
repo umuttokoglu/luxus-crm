@@ -27,6 +27,8 @@ return new class extends Migration
             $table->smallInteger('remote_type')->nullable(false);
             $table->smallInteger('ral_code')->nullable(false);
             $table->double('product_price')->nullable(false);
+            $table->boolean('is_warranty_applicable')->default(true);
+            $table->boolean('is_logo')->default(false);
             $table->timestamps();
         });
     }

@@ -1,33 +1,17 @@
 @extends('layout.admin')
 
 @section('page-title')
-    {{ __('page-title.offers') }}
+    {{ 'Firmalar' }}
 @endsection
 
 @section('page-breadcrumb')
     <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">{{ __('sidebar.dashboard') }}</a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('sidebar.offers') }}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('sidebar.companies') }}</li>
 @endsection
 
 @section('page-content')
-    <div class="col-lg-6 col-sm-12 col-xs-12 layout-spacing">
-        <div class="d-grid gap-2 mx-auto">
-            <a class="btn btn-light-primary btn-rounded mb-2 me-4 new-offer"
-               href="{{ route('companies.create') }}">
-                {{ __('pages/offers-index.buttons.new-offer') }}
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-6 col-sm-12 col-xs-12 layout-spacing">
-        <div class="d-grid gap-2 mx-auto">
-            <a class="btn btn-light-secondary btn-rounded mb-2 me-4 new-offer-to-existing-company"
-               href="{{ route('offers.create') }}">
-                {{ __('pages/offers-index.buttons.new-offer-for-existing-firm') }}
-            </a>
-        </div>
-    </div>
     <div id="tableCustomMixed" class="col-lg-12 col-12 layout-spacing">
         <div class="statbox widget box box-shadow">
             <div class="widget-header">
@@ -47,18 +31,18 @@
                                     <input class="form-check-input" id="custom_mixed_parent_all" type="checkbox">
                                 </div>
                             </th>
-                            <th scope="col">{{ __('pages/offers-index.table.header.company-name') }}</th>
-                            <th scope="col">{{ __('pages/offers-index.table.header.product-count') }}</th>
-                            <th class="text-center" scope="col">{{ __('pages/offers-index.table.header.price') }}</th>
-                            <th class="text-center" scope="col">{{ __('pages/offers-index.table.header.date') }}</th>
-                            <th class="text-center" scope="col">{{ __('pages/offers-index.table.header.status') }}</th>
+                            <th scope="col">Firma Adı</th>
+                            <th scope="col">Adres</th>
+                            <th class="text-center" scope="col">Yetkili Kişi</th>
+                            <th class="text-center" scope="col">Telefon</th>
+                            <th class="text-center" scope="col">E-Posta</th>
                             <th class="text-center" scope="col"></th>
                         </tr>
                         <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
                         </thead>
                         <tbody>
-                        @if(null !== $offers)
-                            @foreach($offers as $offer)
+                        @if(null !== $companies)
+                            @foreach($companies as $company)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-primary">
@@ -68,28 +52,28 @@
                                     <td>
                                         <div class="media">
                                             <div class="media-body align-self-center">
-                                                <span>{{ $offer->name }}</span>
+                                                <span>{{ $company->name }}</span>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="text-success">{{ $offer->offer_product_count }}</span>
+                                        <span class="text-success">{{ $company->address }}</span>
                                     </td>
                                     <td>
                                         <span
-                                            class="text-success">{{ number_format($offer->total_price, 2, ',', '.') . ' €' }}</span>
+                                            class="text-success">{{ $company->official }}</span>
                                     </td>
                                     <td>
                                         <span
-                                            class="text-success">{{ \Carbon\Carbon::parse($offer->created_at)->format('d-m-Y H:i:s') }}</span>
+                                            class="text-success">{{ $company->phone_number }}</span>
                                     </td>
                                     <td class="text-center">
-                                        <span class="badge badge-light-success">Teklif Verildi</span>
+                                        <span class="text-success">{{ $company->email }}</span>
                                     </td>
                                     <td class="text-center">
                                         <div class="action-btns">
-                                            <a href="{{ route('offers.show', [$offer->id]) }}" class="action-btn btn-view bs-tooltip me-2"
-                                               data-toggle="tooltip" data-placement="top" title="Görüntüle">
+                                            <a href="{{ route('offers.create', ['company_id' => $company->id]) }}" class="action-btn btn-view bs-tooltip me-2"
+                                               data-toggle="tooltip" data-placement="top" title="Teklif Ver">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                      stroke-width="2"
@@ -132,17 +116,17 @@
                         </tbody>
                     </table>
                 </div>
-                @if ($offers->hasPages())
+                @if ($companies->hasPages())
                     <div class="paginating-container pagination-default">
                         <ul class="pagination">
-                            @if ($offers->onFirstPage())
+                            @if ($companies->onFirstPage())
                                 <li class="prev disabled"><a href="javascript:void(0);">Önceki</a></li>
                             @else
-                                <li class="prev"><a href="{{ $offers->previousPageUrl() }}">Önceki</a></li>
+                                <li class="prev"><a href="{{ $companies->previousPageUrl() }}">Önceki</a></li>
                             @endif
 
-                            @if ($offers->hasMorePages())
-                                <li class="next"><a href="{{ $offers->nextPageUrl() }}">Sonraki</a></li>
+                            @if ($companies->hasMorePages())
+                                <li class="next"><a href="{{ $companies->nextPageUrl() }}">Sonraki</a></li>
                             @else
                                 <li class="next"><a href="javascript:void(0);">Sonraki</a></li>
                             @endif
