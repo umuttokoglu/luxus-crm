@@ -248,7 +248,8 @@
                                                                     <p>Üşenmez Proje İthalat İhracat Anonim Şirketi</p>
                                                                     <p>Merkez : Efer 3 San. Sit. D Blok Yeşiloba Mah. 46301 Sokak No: 4/H Seyhan Adana</p>
                                                                     <p>Şube : İMÇ 1. Blok No: 1404 Unkapanı İstanbul</p>
-                                                                    <p>Fabrika : Veliköy Organize Sanayi Bölgesi Sanayi Bulvarı No:21/1 Veliköy Çerkezköy Tekirdağ</p>
+                                                                    <p>Fabrika 1: Veliköy Organize Sanayi Bölgesi Sanayi Bulvarı No:21/1 Veliköy Çerkezköy Tekirdağ</p>
+                                                                    <p>Fabrika 2: Çıplaklı Mah. 2163 Sok. No:18 Döşemealtı/Antalya</p>
                                                                     <p>Gsm : +90 (532) 201 49 39  /  Tel : +90 (322) 457 3 457</p>
                                                                     <p>info@usenmezproje.com / www.usenmezproje.com</p>
                                                                 </div>
