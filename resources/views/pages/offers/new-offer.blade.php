@@ -22,7 +22,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                             <h4>@if($selected)
-                                    {{ $companies->name }} Firnasına
+                                    {{ $companies->name }} Firmasına
                                 @endif {{ __('page-title.offer-create') }}</h4>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 
                         <input type="hidden" value="{{ session()->get('offerId') }}" name="offer_id">
 
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="height" class="form-label">Yükseklik</label>
                             <div class="mb-4">
                                 <input id="height" type="text" value="" name="height">
@@ -68,7 +68,7 @@
 
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label for="width" class="form-label">Genişlik</label>
                             <div class="mb-4">
                                 <input id="width" type="text" value="" name="width">
@@ -85,7 +85,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-12 fabric_types">
+                        <div class="row fabric_types">
                         </div>
 
                         <div class="col-md-6">
@@ -103,12 +103,6 @@
                             <select class="form-select" id="remote_type" name="remote_type" required>
                                 <option selected value="0">Kumanda Seçiniz</option>
                             </select>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="motor_quantity" class="form-label">Motor Adedi Giriniz</label>
-                            <input type="text" class="form-control" id="motor_quantity" name="motor_quantity" required
-                                   value="">
                         </div>
 
                         <div class="col-md-6">
@@ -272,19 +266,15 @@
                         var name = response[i]['name'];
                         var direction = response[i]['direction'];
 
+
                         if(direction === 1) {
-                            $(".fabric_types").append('<input class="form-check-input" type="radio" name="fabric_type" value="' + id +'" id="' + id +'"> ' +
+                            $(".fabric_types").append('<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4 fabric-front">' +
+                                '<input class="form-check-input" type="radio" name="fabric_type" value="' + id +'" id="' + id +'"> ' +
                                 '<label class="form-check-label" for="' + id +'">' +
-                                '<span class="avatar-chip bg-dark mb-2 me-4" id="' + name +'">' +
-                                '<img src="' + '{{ asset('') }}' + path + '" alt="' + name +'" width="100" height="100">' +
-                                '<span class="text">' + name +'</span>' +
-                                '</span>' +
-                                '</label>');
-                        } else {
-                            $(".fabric_types").append('<span class="avatar-chip bg-dark mb-2 me-4" style="display:none;" id="' + name +'">' +
-                                '<img src="' + '{{ asset('') }}' + path + '" alt="' + name +'" width="200" height="200">' +
-                                '<span class="text">' + name +'</span>' +
-                                '</span>');
+                                '<img class="card-img-top" src="' + '{{ asset('') }}' + path + '" alt="' + name +'" width="200" height="200">' +
+                                '<h5 class="card-title mb-3">' + name +'</h5>' +
+                                '</label>' +
+                                '</div>');
                         }
                     }
                 }

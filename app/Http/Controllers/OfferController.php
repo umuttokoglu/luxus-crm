@@ -98,9 +98,9 @@ class OfferController extends Controller
             $logoPrice = 40;
         }
         $ralPrice = 0;
-        if (0 != $request->get('ral_code')) {
+        /*if (0 != $request->get('ral_code')) {
             $ralPrice = $productPrice->price * 5 / 100;
-        }
+        }*/
 
         $offerPrice = OfferProduct::query()
             ->where('offer_id', $offerId)
@@ -120,7 +120,7 @@ class OfferController extends Controller
         Offer::query()
             ->where('id', $offerId)
             ->update([
-                'total_price' => $offerPrice + $fabricPrice + ($request->get('motor_quantity') * $remotePrice->price) + $logoPrice + $ralPrice
+                'total_price' => $offerPrice + $fabricPrice + $remotePrice->price + $logoPrice + $ralPrice
             ]);
 
         if (1 == $request->get('is_user_revisit_form')) {
@@ -137,7 +137,6 @@ class OfferController extends Controller
                 'offer_products.width',
                 'offer_products.height',
                 'offer_products.product_price',
-                'offer_products.motor_quantity',
                 'offer_products.motor_type',
                 'offer_products.ral_code',
                 'offer_products.is_warranty_applicable',

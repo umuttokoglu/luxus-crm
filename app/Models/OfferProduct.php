@@ -15,7 +15,6 @@ class OfferProduct extends Model
         'fabric_type',
         'motor_type',
         'motor_direction',
-        'motor_quantity',
         'remote_type',
         'ral_code',
         'product_price',

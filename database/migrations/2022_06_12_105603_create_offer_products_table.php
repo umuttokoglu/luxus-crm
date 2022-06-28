@@ -23,7 +23,6 @@ return new class extends Migration
             $table->smallInteger('fabric_type')->nullable(false);
             $table->smallInteger('motor_type')->nullable(false);
             $table->smallInteger('motor_direction')->nullable(false);
-            $table->smallInteger('motor_quantity')->nullable(false);
             $table->smallInteger('remote_type')->nullable(false);
             $table->smallInteger('ral_code')->nullable(false);
             $table->double('product_price')->nullable(false);
