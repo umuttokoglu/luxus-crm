@@ -259,6 +259,7 @@
                     var len = response.length;
 
                     $(".fabric").empty();
+                    $(".fabric_types").empty();
 
                     for (var i = 0; i < len; i++) {
                         var id = response[i]['id'];

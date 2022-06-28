@@ -1,0 +1,211 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    /* A4 96 PPI değerine göre boyutlandırdım */
+    max-width: 794px;
+    height: 1123px;
+    padding-bottom: 20px;
+    margin: 50px auto;
+    font-size: 11px;
+}
+
+/* Top - Start */
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.top .logo img {
+    width: 200px;
+    margin-left: 20px;
+    /* background-color: blue; */
+}
+
+.top-right table tr th {
+    text-align: end;
+    padding-right: 10px;
+}
+
+.top-right table tr th,
+.top-right table tr td {
+    padding-top: 10px;
+}
+
+/* Top - End */
+
+/* Contact - Start */
+
+.contact table tr th:first-child {
+    width: 100px;
+    text-align: left;
+}
+
+.contact table tr:first-child td {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.contact table tr td {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.contact table tr th {
+    padding-top: 10px;
+}
+
+/* Contact - End */
+
+/* Offer - Start */
+
+.offer {
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.offer p {
+    font-size: 10px;
+    line-height: 15px;
+}
+
+.offer table,
+.offer table td,
+.offer table th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.offer table {
+    /* border: 1px solid black; */
+    width: 100%;
+    border-collapse: collapse;
+    /* background-color: beige; */
+}
+
+.no {
+    width: 10px;
+}
+
+.adet {
+    width: 20px;
+}
+
+.birimf {
+    width: 90px;
+}
+
+.olcu {
+    width: 200px;
+}
+
+.toplam {
+    width: 90px;
+}
+
+/* Offer - End */
+
+/* Other Lists - Start */
+
+.other-lists {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.other-lists .list1 {
+    list-style-type: "—";
+}
+
+.other-lists .list1 li {
+    padding-left: 5px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.other-lists .list1 li ul li {
+    font-weight: 100;
+    padding-left: 0px;
+    margin-left: 30px;
+    margin-bottom: 0px;
+    margin-top: 7px;
+    list-style-type: disc;
+}
+
+.bank-account-list {
+    display: flex;
+}
+
+.bank-account-list-1 {
+    /* background-color: red; */
+    width: fit-content;
+}
+
+.bank-account-list-2 {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.bank-account-list-2 li,
+.bank-account-list-3 li {
+    list-style-type: none !important;
+}
+
+.bank-account-list-3 {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.notes {
+    display: flex;
+}
+
+.no-type li {
+    list-style: none !important;
+}
+
+/* Other Lists - End */
+
+/* Line - Start */
+.line {
+    border-bottom: 2px solid black;
+}
+
+/* Line - End */
+
+/* Info - Start */
+
+.info {
+    margin-top: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info p {
+    margin-bottom: 5px;
+}
+.info img{
+    width: 150px;
+}
+/* Info - End */

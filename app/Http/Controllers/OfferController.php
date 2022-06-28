@@ -105,11 +105,11 @@ class OfferController extends Controller
         $offerPrice = OfferProduct::query()
             ->where('offer_id', $offerId)
             ->sum('product_price');
-
+        $totalProductPrice = $fabricPrice + $remotePrice->price + $logoPrice + $ralPrice;
         $offerProducts = OfferProduct::query()
             ->create(array_merge($request->except(['_token']), [
                     'offer_id' => $offerId,
-                    'product_price' => $fabricPrice,
+                    'product_price' => $totalProductPrice,
                     'is_warranty_applicable' => $productPrice->is_warranty
                 ]));
 
@@ -120,7 +120,7 @@ class OfferController extends Controller
         Offer::query()
             ->where('id', $offerId)
             ->update([
-                'total_price' => $offerPrice + $fabricPrice + $remotePrice->price + $logoPrice + $ralPrice
+                'total_price' => $offerPrice + $totalProductPrice
             ]);
 
         if (1 == $request->get('is_user_revisit_form')) {
@@ -146,8 +146,7 @@ class OfferController extends Controller
                 'motors.name as motor_name',
                 'motor_directions.name as motor_direction',
                 'remotes.name as remote_name',
-                'remotes.price as remote_price',
-                'companies.*'
+                'remotes.price as remote_price'
             ])
             ->join('fabric_types', 'offer_products.fabric_type', '=', 'fabric_types.id')
             ->join('fabrics', 'fabrics.id', '=', 'fabric_types.fabric_id')
@@ -155,7 +154,6 @@ class OfferController extends Controller
             ->join('motor_directions', 'motor_directions.id', '=', 'offer_products.motor_direction')
             ->join('remotes', 'remotes.id', '=', 'offer_products.remote_type')
             ->join('offers', 'offers.id', '=', 'offer_products.offer_id')
-            ->join('companies', 'companies.id', '=', 'offers.company_id')
             ->where('offer_id', $offer->id)
             ->orderByDesc('offer_products.created_at')
             ->get();
