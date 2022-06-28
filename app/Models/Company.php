@@ -13,6 +13,9 @@ class Company extends Model
         'address',
         'official',
         'phone_number',
-        'email'
+        'email',
+        'tax_no',
+        'tax_administration',
+        'billing_type'
     ];
 }

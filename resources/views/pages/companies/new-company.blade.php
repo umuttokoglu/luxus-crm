@@ -34,11 +34,11 @@
                 @endif
                 <form class="row g-3" action="{{ route('companies.store') }}" method="post">
                     @csrf
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="name" class="form-label">{{ __('pages/company-create.form.labels.name') }}</label>
                         <input type="text" class="form-control" id="name" name="name" required value="{{ old('name') }}">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="official" class="form-label">{{ __('pages/company-create.form.labels.official') }}</label>
                         <input type="text" class="form-control" id="official" name="official" required value="{{ old('official') }}">
                     </div>
@@ -50,9 +50,36 @@
                         <label for="phone_number" class="form-label">{{ __('pages/company-create.form.labels.phone-number') }}</label>
                         <input type="tel" class="form-control" id="phone_number" name="phone_number" required value="{{ old('phone_number') }}">
                     </div>
+                    <div class="col-md-6">
+                        <label for="tax_no" class="form-label">{{ __('pages/company-create.form.labels.tax-no') }}</label>
+                        <input type="text" class="form-control" id="tax_no" name="tax_no" required value="{{ old('tax_no') }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tax_administration" class="form-label">{{ __('pages/company-create.form.labels.tax-administration') }}</label>
+                        <input type="text" class="form-control" id="tax_administration" name="tax_administration" required value="{{ old('tax_administration') }}">
+                    </div>
                     <div class="col-12">
                         <label for="address" class="form-label">{{ __('pages/company-create.form.labels.address') }}</label>
-                        <input type="text" class="form-control" id="address" name="address" required value="{{ old('address') }}">
+                        <textarea type="text" class="form-control" id="address" name="address" required rows="5">{{ old('address') }}</textarea>
+                    </div>
+                    <div class="col-12">
+                        <fieldset class="row mb-3">
+                            <legend class="col-form-label col-sm-2 pt-0">{{ __('pages/company-create.form.labels.billing-type.label') }}</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="billing_type" id="billing_type_e_archive" value="1" checked>
+                                    <label class="form-check-label" for="billing_type_e_archive">
+                                        {{ __('pages/company-create.form.labels.billing-type.e-archive') }}
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="billing_type" id="billing_type_e_bill" value="2">
+                                    <label class="form-check-label" for="billing_type_e_bill">
+                                        {{ __('pages/company-create.form.labels.billing-type.e-bill') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">{{ __('pages/company-create.form.buttons.save') }}</button>

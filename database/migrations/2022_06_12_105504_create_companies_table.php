@@ -21,6 +21,9 @@ return new class extends Migration
                 ->comment('It is a text field for now. After adding auth for companies this field will change to accept id.');
             $table->string('phone_number', 18)->nullable(false);
             $table->string('email')->nullable(false);
+            $table->string('tax_no')->nullable(false);
+            $table->string('tax_administration')->nullable(false);
+            $table->string('billing_type')->default(1)->comment('1 => E-Arşiv, 2 => E-Fatura')->nullable(false);
             $table->timestamps();
         });
     }
